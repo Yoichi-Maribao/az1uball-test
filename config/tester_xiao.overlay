@@ -1,24 +1,23 @@
-#include <input/processors.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
-
-// &default_transform {
-//     // Set this to the number of columns on the left side.
-//     col-offset = <6>;
+// #include <input/processors.dtsi>
+// #include <dt-bindings/zmk/input_transform.h>
+//
+// &i2c0 {
+//     status = "okay";
+//     sda-pin = <4>;
+//     scl-pin = <5>;
+//     
+//     az1uball: az1uball@0x0a {
+//         compatible = "az1uball";
+//         reg = <0x0a>;
+//     };
 // };
-
-&trackball_split {
-    device = <&trackball>;
-    input-processors = <&zip_xy_scaler 16 16>,<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
-};
-
-&xiao_i2c {
+&i2c0 {
     status = "okay";
-    clock-frequency = <I2C_BITRATE_FAST>;
-    trackball: trackball@a {
-        compatible = "palette,az1uball";
-        reg = <0x0A>;
-        status = "okay";
-        default-mode = "mouse";
-        sensitivity = "4x";
+    sda-pin = <4>;  // P0.04
+    scl-pin = <5>;  // P0.05
+
+    az1uball: az1uball@0x0a {
+        compatible = "az1uball";  // ドライバが "az1uball" を認識するcompatible名
+        reg = <0x0a>;             // I2Cアドレス (0x0aが多い)
     };
 };
