@@ -13,8 +13,8 @@
 // };
 &i2c0 {
     status = "okay";
-    sda-pin = <4>;  // P0.04
-    scl-pin = <5>;  // P0.05
+    zephyr,sda-pin = <4>;  // P0.04
+    zephyr,scl-pin = <5>;  // P0.05
 
     az1uball: az1uball@0x0a {
         compatible = "az1uball";  // ドライバが "az1uball" を認識するcompatible名
