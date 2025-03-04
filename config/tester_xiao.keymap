@@ -1,5 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/trackball_pim447.h>
+
 
 #define PIN_MACRO(name, pin) \
 / { \
@@ -14,34 +16,17 @@
     }; \
 };
 
-PIN_MACRO(pin0, <&kp N0>)
-PIN_MACRO(pin1, <&kp N1>)
-PIN_MACRO(pin2, <&kp N2>)
-PIN_MACRO(pin3, <&kp N3>)
-PIN_MACRO(pin4, <&kp N4>)
-PIN_MACRO(pin5, <&kp N5>)
-PIN_MACRO(pin6, <&kp N6>)
-PIN_MACRO(pin7, <&kp N7>)
-PIN_MACRO(pin8, <&kp N8>)
-PIN_MACRO(pin9, <&kp N9>)
-PIN_MACRO(pin10, <&kp N1 &kp N0>)
-
 / {
+    behaviors {
+        trackball_mouse = &sensor_mouse;
+    };
+
     keymap {
         compatible = "zmk,keymap";
-
-        default_layer {
-            bindings = <&pin0
-                        &pin1
-                        &pin2
-                        &pin3
-                        &pin4
-                        &pin5
-                        &pin6
-                        &pin7
-                        &pin8
-                        &pin9
-                        &pin10>;
-        };
+        sensor-bindings = <
+            &trackball_mouse PIM447_X
+            &trackball_mouse PIM447_Y
+        >;
+        // 必要に応じてボタン割り当ても追加
     };
 };

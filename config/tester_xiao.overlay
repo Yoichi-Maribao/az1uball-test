@@ -1,0 +1,7 @@
+&i2c0 {
+    status = "okay";
+    pim447: pim447@0x0a {
+        compatible = "pim,pim447";
+        reg = <0x0a>;
+    };
+};
