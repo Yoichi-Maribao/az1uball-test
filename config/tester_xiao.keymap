@@ -1,24 +1,24 @@
-/ {
-    behaviors {
-        // ZMKが標準で提供する「センサー→マウス動作」のbehavior
-        sensor_mouse = &sensor_mouse;
-    };
-
-    keymap {
-        compatible = "zmk,keymap";
-
-        // az1uballのX/Y軸をポインタ入力として扱う
-        sensor-bindings = <
-            &sensor_mouse AZ1UBALL_X
-            &sensor_mouse AZ1UBALL_Y
-        >;
-
-        // 他のボタン（左クリック・右クリック等）がある場合は下記のようにbindingsで定義
-        // bindings = <
-        //     &kp BTN_LEFT
-        //     &kp BTN_RIGHT
-        //     &kp BTN_MIDDLE
-        //     ...
-        // >;
-    };
-};
+// / {
+//     behaviors {
+//         // ZMKが標準で提供する「センサー→マウス動作」のbehavior
+//         sensor_mouse = &sensor_mouse;
+//     };
+//
+//     keymap {
+//         compatible = "zmk,keymap";
+//
+//         // az1uballのX/Y軸をポインタ入力として扱う
+//         sensor-bindings = <
+//             &sensor_mouse AZ1UBALL_X
+//             &sensor_mouse AZ1UBALL_Y
+//         >;
+//
+//         // 他のボタン（左クリック・右クリック等）がある場合は下記のようにbindingsで定義
+//         // bindings = <
+//         //     &kp BTN_LEFT
+//         //     &kp BTN_RIGHT
+//         //     &kp BTN_MIDDLE
+//         //     ...
+//         // >;
+//     };
+// };
