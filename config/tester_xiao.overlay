@@ -1,3 +1,16 @@
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+
+// &default_transform {
+//     // Set this to the number of columns on the left side.
+//     col-offset = <6>;
+// };
+
+&trackball_split {
+    device = <&trackball>;
+    input-processors = <&zip_xy_scaler 16 16>,<&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+};
+
 &xiao_i2c {
     status = "okay";
     clock-frequency = <I2C_BITRATE_FAST>;
@@ -6,6 +19,6 @@
         reg = <0x0A>;
         status = "okay";
         default-mode = "mouse";
-        sensitivity = "2x";
+        sensitivity = "4x";
     };
 };
