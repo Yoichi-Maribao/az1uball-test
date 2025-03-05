@@ -18,8 +18,8 @@
             bindings = <&none>;
 
             sensor-bindings = <
-                &sensor_mouse MOVE_HORIZONTAL
-                &sensor_mouse MOVE_VERTICAL
+                &sensor_mouse 0  // X軸
+                &sensor_mouse 1  // Y軸
             >;
         };
     };
