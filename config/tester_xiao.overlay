@@ -11,7 +11,7 @@
         reg = <0x0A>;
         status = "okay";
         default-mode = "mouse";
-        sensitivity = "16x";
+        sensitivity = "6x";
     };
 };
 
@@ -20,7 +20,7 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball>;
-        input-processors = <&zip_xy_scaler 12 12>,
+        input-processors = <&zip_xy_scaler 24 24>,
                           <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
     };
 };
