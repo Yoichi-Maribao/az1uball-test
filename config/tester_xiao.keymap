@@ -1,10 +1,12 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/mouse-input.h>
 
 / {
     behaviors {
         sensor_mouse: sensor_mouse {
-            compatible = "zmk,behavior-sensor-mouse";
+            compatible = "zmk,behavior-sensor-mouse-input";
             label = "SENSOR_MOUSE";
             #sensor-binding-cells = <1>;
         };
@@ -17,8 +19,8 @@
             bindings = <&none>;
 
             sensor-bindings = <
-                &sensor_mouse 0
-                &sensor_mouse 1
+                &sensor_mouse X
+                &sensor_mouse Y
             >;
         };
     };
