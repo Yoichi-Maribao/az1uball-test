@@ -5,9 +5,9 @@
 / {
     behaviors {
         sensor_mouse: sensor_mouse {
-            compatible = "zmk,behavior-sensor-mouse";
+            compatible = "zmk,behavior-sensor-mouse-scroll";
             label = "SENSOR_MOUSE";
-            #sensor-binding-cells = <1>;
+            #sensor-binding-cells = <2>;
         };
     };
 
@@ -18,8 +18,8 @@
             bindings = <&none>;
 
             sensor-bindings = <
-                &sensor_mouse 0  // X軸
-                &sensor_mouse 1  // Y軸
+                &sensor_mouse SCROLL_UP SCROLL_DOWN
+                &sensor_mouse SCROLL_LEFT SCROLL_RIGHT
             >;
         };
     };
