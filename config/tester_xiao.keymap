@@ -2,11 +2,24 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        sensor_mouse: sensor_mouse {
+            compatible = "zmk,behavior-sensor-mouse";
+            label = "SENSOR_MOUSE";
+            #sensor-binding-cells = <1>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <&none>;
+
+            sensor-bindings = <
+                &sensor_mouse 0
+                &sensor_mouse 1
+            >;
         };
     };
 };
