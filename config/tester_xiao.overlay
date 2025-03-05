@@ -1,37 +1,25 @@
-#include <nordic/nrf-pinctrl.dtsi>
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 
-/ {
-    pinctrl {
-        // i2c0を使用する場合のデフォルト設定
-        i2c0_default: i2c0_default {
-            group1 {
-                // TWIM_SCLがP0.05、TWIM_SDAがP0.04の場合
-                psels = <NRF_PSEL(TWIM_SCL, 0, 5)>,
-                        <NRF_PSEL(TWIM_SDA, 0, 4)>;
-            };
-        };
-        // スリープ時（low-power時）の設定
-        i2c0_sleep: i2c0_sleep {
-            group1 {
-                psels = <NRF_PSEL(TWIM_SCL, 0, 5)>,
-                        <NRF_PSEL(TWIM_SDA, 0, 4)>;
-                low-power-enable;
-            };
-        };
+&xiao_i2c {
+    status = "okay";
+    clock-frequency = <I2C_BITRATE_FAST>;
+
+    trackball: trackball@a {
+        compatible = "palette,az1uball";
+        reg = <0x0A>;
+        status = "okay";
+        default-mode = "mouse";
+        sensitivity = "4x";
     };
 };
 
-&i2c0 {
-    // ここのcompatibleはボードDTSに記述済み（"nordic,nrf-twim"など）なのでoverlayでは触れない
-    status = "okay";
-
-    pinctrl-0 = <&i2c0_default>;
-    pinctrl-1 = <&i2c0_sleep>;
-    pinctrl-names = "default", "sleep";
-
-    // az1uballデバイス定義
-    az1uball: az1uball@0x0a {
-        compatible = "az1uball";
-        reg = <0x0a>;
+/ {
+    trackball_input_listener: trackball_input_listener {
+        compatible = "zmk,input-listener";
+        status = "okay";
+        device = <&trackball>;
+        input-processors = <&zip_xy_scaler 16 16>;
     };
 };
