@@ -16,10 +16,28 @@
 };
 
 / {
+    behaviors {
+        sensor_mouse: sensor_mouse {
+            compatible = "zmk,behavior-sensor-mouse";
+            label = "SENSOR_MOUSE";
+            #sensor-binding-cells = <1>;
+        };
+    };
+
     trackball_input_listener: trackball_input_listener {
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball>;
         input-processors = <&zip_xy_scaler 16 16>;
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+        default_layer {
+            sensor-bindings = <
+                &sensor_mouse AZ1UBALL_X
+                &sensor_mouse AZ1UBALL_Y
+            >;
+        };
     };
 };
